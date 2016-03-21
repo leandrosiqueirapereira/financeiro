@@ -4,11 +4,13 @@ import br.com.munif.financeiro.util.SuperEntidade;
 import javax.persistence.Entity;
 
 @Entity
-public class Pessoa extends SuperEntidade {
+public class Categoria extends SuperEntidade {
 
     private String nome;
 
-    private String email;
+    public Categoria() {
+        nome = "nova categoria";
+    }
 
     public String getNome() {
         return nome;
@@ -16,14 +18,6 @@ public class Pessoa extends SuperEntidade {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
 }

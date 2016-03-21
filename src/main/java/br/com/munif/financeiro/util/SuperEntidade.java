@@ -1,4 +1,4 @@
-package br.com.munif.financeiro.entidades;
+package br.com.munif.financeiro.util;
 
 import java.io.Serializable;
 import java.util.Objects;
