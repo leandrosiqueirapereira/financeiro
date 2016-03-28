@@ -7,19 +7,25 @@ import javax.persistence.Persistence;
 public class Persistencia {
 
     private static Persistencia instancia = new Persistencia();
-
+    
     public static Persistencia getInstancia() {
         return instancia;
     }
 
     private final EntityManagerFactory entityManagerFactory;
+    
+    private ThreadLocal<EntityManager> tlem;
 
     private Persistencia() {
         entityManagerFactory = Persistence.createEntityManagerFactory("financeiroPU");
+        tlem=new ThreadLocal<>();
     }
 
     public EntityManager getEntityManager() {
-        return entityManagerFactory.createEntityManager();
+        if (tlem.get()==null){
+            tlem.set(entityManagerFactory.createEntityManager());
+        }
+        return tlem.get();
     }
 
     public void encerra() {

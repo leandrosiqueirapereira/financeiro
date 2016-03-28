@@ -9,9 +9,13 @@ import javax.persistence.Query;
 public class SuperEntidadeRepositorio<T extends SuperEntidade> {
 
     private final Class<T> classe;
-    
-    public SuperEntidadeRepositorio(Class classe){
-        this.classe=classe;
+
+    public Class<T> getClasse() {
+        return classe;
+    }
+
+    public SuperEntidadeRepositorio(Class classe) {
+        this.classe = classe;
     }
 
     public T consultar(Long codigo) {
@@ -21,7 +25,7 @@ public class SuperEntidadeRepositorio<T extends SuperEntidade> {
 
     public List<T> consultar() {
         EntityManager em = Persistencia.getInstancia().getEntityManager();
-        Query consulta = em.createQuery("from "+classe.getSimpleName()+" obj");
+        Query consulta = em.createQuery("from " + classe.getSimpleName() + " obj");
         return consulta.getResultList();
     }
 
@@ -34,7 +38,7 @@ public class SuperEntidadeRepositorio<T extends SuperEntidade> {
         EntityManager em = Persistencia.getInstancia().getEntityManager();
         obj = consultar(obj.getCodigo());
         if (obj == null) {
-            throw new RuntimeException("Este Caixa foi removido em outra operação");
+            throw new RuntimeException("Este " + classe.getSimpleName() + " foi removido em outra operação");
         }
         em.remove(obj);
     }
