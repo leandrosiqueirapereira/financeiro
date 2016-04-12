@@ -1,6 +1,8 @@
 package br.com.munif.financeiro;
 
+import br.com.munif.financeiro.entidades.Juridica;
 import br.com.munif.financeiro.entidades.Saldo;
+import br.com.munif.financeiro.negocio.SuperEntidadeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
@@ -18,7 +20,7 @@ public class Programa {
         System.out.println("--->"+saldo.getCaixa().getNome());
         
 
-
+        
 
 //        SuperEntidadeService<Caixa> caixaService = new SuperEntidadeService<>(Caixa.class);
 //        EntityManager entityManager = Persistencia.getInstancia().getEntityManager();
