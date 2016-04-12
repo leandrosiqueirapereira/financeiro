@@ -1,11 +1,8 @@
 package br.com.munif.financeiro.negocio;
 
 import br.com.munif.financeiro.repositorio.SuperEntidadeRepositorio;
-import br.com.munif.financeiro.util.Persistencia;
 import br.com.munif.financeiro.util.SuperEntidade;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 public class SuperEntidadeService<T extends SuperEntidade> {
 
