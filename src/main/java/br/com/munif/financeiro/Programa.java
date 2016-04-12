@@ -1,9 +1,17 @@
 package br.com.munif.financeiro;
 
+import br.com.munif.financeiro.entidades.Caixa;
+import br.com.munif.financeiro.entidades.MovimentoCaixa;
 import br.com.munif.financeiro.entidades.Saldo;
+import br.com.munif.financeiro.negocio.SuperEntidadeService;
+import br.com.munif.financeiro.util.Persistencia;
+import br.com.munif.financeiro.util.SuperEntidade;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Date;
+import javax.persistence.EntityManager;
 
 public class Programa {
 
@@ -17,19 +25,31 @@ public class Programa {
         
         System.out.println("--->"+saldo.getCaixa().getNome());
         
-
-
-
-//        SuperEntidadeService<Caixa> caixaService = new SuperEntidadeService<>(Caixa.class);
-//        EntityManager entityManager = Persistencia.getInstancia().getEntityManager();
+        SuperEntidadeService<Caixa> caixaService = new SuperEntidadeService<>(Caixa.class);
+        EntityManager entityManager = Persistencia.getInstancia().getEntityManager();
+        entityManager.getTransaction().begin();
+        Caixa caixa = new Caixa();
+        caixa.setNome("Novo caixa");
+        System.out.println("------------>>>>>>>>>>>> "
+                + caixaService.salvar(caixa));
+        entityManager.getTransaction().commit();
+           entityManager.close();
+        Persistencia.getInstancia().encerra();
+        
+//        SuperEntidadeService<MovimentoCaixa> movimentoCaixaService = new SuperEntidadeService<>(MovimentoCaixa.class);
+//        EntityManager entityManager2 = Persistencia.getInstancia().getEntityManager();
 //        entityManager.getTransaction().begin();
-//        Caixa caixa = new Caixa();
-//        caixa.setNome("Novo caixa");
-//        System.out.println(""
-//                + caixaService.salvar(caixa));
-//        entityManager.getTransaction().commit();
-        //   entityManager.close();
-//        Persistencia.getInstancia().encerra();
+//        MovimentoCaixa movimentoCaixa = new MovimentoCaixa();
+//        movimentoCaixa.setCaixa(caixa);
+//        movimentoCaixa.setHistorico("Histórico");
+//        movimentoCaixa.setRealizado(true);
+//        movimentoCaixa.setValor(new BigDecimal("1000"));
+//        System.out.println("------------>>>>>>>>>>>> "
+//                + movimentoCaixaService.salvar(movimentoCaixa));
+//        entityManager2.getTransaction().commit();
+//           entityManager2.close();
+//        Persistencia.getInstancia().encerra();        
+        
     }
 
 }
