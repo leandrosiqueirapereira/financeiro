@@ -15,15 +15,13 @@
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
     -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-<<<<<<< HEAD
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/financeiro"/>
+
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/financeiro"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value="root"/>
-=======
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/financeiro?createDatabaseIfNotExist=true"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
->>>>>>> 107a20188d4893a12b19b53d81b35b328455bb2c
+      <property name="javax.persistence.jdbc.password" value="senha"/>
+
+
+
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
     </properties>
   </persistence-unit>
