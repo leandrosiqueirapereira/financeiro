@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author munif
  */
-@WebServlet(name = "Principal", urlPatterns = {"/index.html"})
+//@WebServlet(name = "Principal", urlPatterns = {"/index.html"})
 public class Principal extends HttpServlet {
 
     @Override

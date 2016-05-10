@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Sistema Financeiro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    </head>
+    <body ng-app="sistema">
+        <h1>Sistema Financeiro</h1>
+        <div ng-controller="controlador">
+
+            {{msg}}<br/>
+            <input type="text" ng-model="filtro"/><br/>
+            
+            <ul>
+                <li ng-repeat="dado in dados | filter:filtro">{{dado.nome}}</li>
+
+            </ul>
+
+        </div>
+        <script>
+            var programa = angular.module("sistema", []);
+            programa.controller('controlador'
+                    , ['$scope', '$http', function ($scope, $http) {
+                    $scope.msg = 'Carregando';
+                    $scope.filtro = '';
+                    $scope.dados=[];
+            
+                    $http.get('/financeiro/api/caixa')
+                            .success(function (resultado) {
+                                console.log("Durante");
+                                $scope.msg = "Foi possível carregar";
+                                $scope.dados=resultado;
+                            })
+                            .error(function (data, status) {
+                                $scope.msg = "Não foi possível carregar";
+                            });
+                    }]);
+        
+
+
+        </script>
+    </body>
+
+
+
+</html>
