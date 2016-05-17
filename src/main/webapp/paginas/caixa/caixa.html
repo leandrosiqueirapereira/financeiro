@@ -1,0 +1,15 @@
+<h1 align="center">Cadastro de Caixa</h1>
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row container-fluid">
+                <form name="CaixaForm">
+                    <label>Caixa:</label>
+                    <input required type="text" class="form-control" ng-model="entidade.nome"/>
+                    <p ng-show="!entidade.nome" class="text text-danger">Digite um nome</p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button ng-disabled="CaixaForm.$invalid" ng-click="salvar(entidade)" type="button" class="btn btn-primary pull-right">Salvar</button>
+</div>

@@ -4,50 +4,44 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html ng-app="sistema">
     <head>
         <title>Sistema Financeiro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
-    </head>
-    <body ng-app="sistema">
-        <h1>Sistema Financeiro</h1>
-        <div ng-controller="controlador">
-
-            {{msg}}<br/>
-            <input type="text" ng-model="filtro"/><br/>
-            
-            <ul>
-                <li ng-repeat="dado in dados | filter:filtro">{{dado.nome}}</li>
-
-            </ul>
-
-        </div>
-        <script>
-            var programa = angular.module("sistema", []);
-            programa.controller('controlador'
-                    , ['$scope', '$http', function ($scope, $http) {
-                    $scope.msg = 'Carregando';
-                    $scope.filtro = '';
-                    $scope.dados=[];
-            
-                    $http.get('/financeiro/api/caixa')
-                            .success(function (resultado) {
-                                console.log("Durante");
-                                $scope.msg = "Foi possível carregar";
-                                $scope.dados=resultado;
-                            })
-                            .error(function (data, status) {
-                                $scope.msg = "Não foi possível carregar";
-                            });
-                    }]);
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.min.js"></script>
+        <script src="paginas/home/home.js"></script>
+        <script src="paginas/caixa/caixa.js"></script>
+        <script src="app.js"></script>
         
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    </head>
+    <body >
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
 
-
-        </script>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a ui-sref="home">Pagina inicial <span class="sr-only">(current)</span></a></li>
+                        <li><a ui-sref="caixalistagem">Caixa</a></li>
+                        
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        
+        <div ui-view></div>
     </body>
-
-
-
 </html>
