@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
  *
  * @author fatecie26
  */
-@WebServlet(name = "CategoriaApi", urlPatterns = {"/api/categoria"})
+@WebServlet(name = "CategoriaApi", urlPatterns = {"/api/categoria/*"})
 public class CategoriaApi extends SuperEntidadeApi<Categoria>{
 
     @Override
