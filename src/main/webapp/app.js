@@ -2,7 +2,8 @@ angular.module('sistema', ['app.home', 'app.caixa', 'ui.router'])
         .config(function ($stateProvider, $urlRouterProvider){
             
             $urlRouterProvider.otherwise('home');
-            var url = location.origin + '/financeiro/api/caixa';
+            var urlCaixa = location.origin + '/financeiro/api/caixa';
+            var urlCategoria = location.origin + '/financeiro/api/categoria';
             
             $stateProvider  
                 .state('home', {
@@ -26,7 +27,27 @@ angular.module('sistema', ['app.home', 'app.caixa', 'ui.router'])
                     controller: 'CaixaController'   ,
                     resolve: {
                         entidade: function ($http, $stateParams){
-                            return $http.get(url.concat('/'+$stateParams.id))
+                            return $http.get(urlCaixa.concat('/'+$stateParams.id))
+                        }
+                    }
+                })
+                .state('categoria', {
+                    url: '/categoria',
+                    templateUrl: 'paginas/categoria/categoria.html'
+//                    controller: 'CategoriaController'    
+                })
+                .state('categorialistagem', {
+                    url: '/categorialistagem',
+                    templateUrl: 'paginas/categoria/listar.html',
+                    controller: 'CategoriaListarController'    
+                })
+                .state('categoriaeditar', {
+                    url: '/categoriaeditar/:id',
+                    templateUrl: 'paginas/categoria/categoria.html',
+                    controller: 'CategoriaController'   ,
+                    resolve: {
+                        entidade: function ($http, $stateParams){
+                            return $http.get(urlCategoria.concat('/'+$stateParams.id))
                         }
                     }
                 })
