@@ -1,12 +1,18 @@
 package br.com.munif.financeiro;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import br.com.munif.financeiro.entidades.Caixa;
 import br.com.munif.financeiro.entidades.MovimentoCaixa;
 import br.com.munif.financeiro.entidades.Saldo;
 import br.com.munif.financeiro.negocio.SuperEntidadeService;
 import br.com.munif.financeiro.util.Persistencia;
 import br.com.munif.financeiro.util.SuperEntidade;
+=======
+import br.com.munif.financeiro.entidades.Juridica;
+import br.com.munif.financeiro.entidades.Saldo;
+import br.com.munif.financeiro.negocio.SuperEntidadeService;
+>>>>>>> 3d1f1b6ab087d1ebd6337b45af6813333007803e
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
@@ -49,6 +55,7 @@ public class Programa {
         
         System.out.println("--->"+saldo.getCaixa().getNome());
         
+<<<<<<< HEAD
         SuperEntidadeService<Caixa> caixaService = new SuperEntidadeService<>(Caixa.class);
         EntityManager entityManager = Persistencia.getInstancia().getEntityManager();
         entityManager.getTransaction().begin();
@@ -64,6 +71,10 @@ public class Programa {
 //        EntityManager entityManager2 = Persistencia.getInstancia().getEntityManager();
 =======
 
+=======
+
+        
+>>>>>>> 3d1f1b6ab087d1ebd6337b45af6813333007803e
 
 //        SuperEntidadeService<Caixa> caixaService = new SuperEntidadeService<>(Caixa.class);
 //        EntityManager entityManager = Persistencia.getInstancia().getEntityManager();
