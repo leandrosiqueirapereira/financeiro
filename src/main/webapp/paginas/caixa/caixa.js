@@ -32,8 +32,9 @@ angular.module('app.caixa', [])
                             $scope.dados = resposta.data;
                         })
             }
-            
+            console.log("Listou!!!!")
             $scope.listar();
+            
             
         })
         .service('CaixaService', function ($http) {

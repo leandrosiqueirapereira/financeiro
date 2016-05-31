@@ -17,11 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(filterName = "FiltroTransacoes", urlPatterns = {"/api/*"})
 public class FiltroTransacoes implements Filter {
-    
+
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
+
         Throwable problem = null;
         EntityManager em = Persistencia.getInstancia().getEntityManager();
         try {
@@ -29,10 +29,13 @@ public class FiltroTransacoes implements Filter {
             chain.doFilter(request, response);
             em.getTransaction().commit();
         } catch (Throwable t) {
-            em.getTransaction().rollback();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             problem = t;
             t.printStackTrace();
         }
+        Persistencia.getInstancia().closeEntityManager();
         
         if (problem != null) {
             if (problem instanceof ServletException) {
@@ -58,7 +61,7 @@ public class FiltroTransacoes implements Filter {
     public void init(FilterConfig filterConfig) {
         Persistencia.getInstancia();
     }
-    
+
     private void sendProcessingError(Throwable t, ServletResponse resposta) throws IOException {
         resposta.setContentType("application/json;charset=UTF-8");
         if (resposta instanceof HttpServletResponse) {
@@ -67,7 +70,7 @@ public class FiltroTransacoes implements Filter {
         }
         new ObjectMapper().writeValue(resposta.getOutputStream(), new Erro(getStackTrace(t)));
     }
-    
+
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -81,5 +84,5 @@ public class FiltroTransacoes implements Filter {
         }
         return stackTrace;
     }
-    
+
 }

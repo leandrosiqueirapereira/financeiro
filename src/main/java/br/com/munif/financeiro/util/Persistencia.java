@@ -32,4 +32,13 @@ public class Persistencia {
         entityManagerFactory.close();
     }
 
+    public void closeEntityManager() {
+        if (tlem.get()!=null){
+            if (tlem.get().isOpen()){
+                tlem.get().close();
+            }
+            tlem.set(null);
+        }
+    }
+
 }
