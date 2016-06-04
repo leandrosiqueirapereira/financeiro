@@ -9,6 +9,8 @@ import javax.persistence.Temporal;
 
 @Entity
 public class Pagamento extends SuperEntidade {
+    
+  
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date quando;

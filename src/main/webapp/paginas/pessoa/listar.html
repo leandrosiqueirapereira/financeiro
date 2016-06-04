@@ -1,0 +1,21 @@
+<h1>Listagem de Pessoas</h1>
+<div class="row">
+    <div class="col-md-12">
+        <button ui-sref="pessoa" class="btn btn-default">Novo</button>
+        <table class="table table-hover">
+            <tr>
+                <td>Nome</td>
+                <td>E-mail</td>
+                <td>Opcões</td>
+            </tr>
+            <tr ng-repeat="pessoa in dados">
+                <td>{{pessoa.nome}}</td>
+                <td>{{pessoa.email}}</td>
+                <td>
+                    <button ui-sref="pessoaeditar({id: pessoa.codigo})" class="btn btn-info">Editar</button>
+                    <button ng-click="remover(pessoa.codigo)" class="btn btn-danger">Remover</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
