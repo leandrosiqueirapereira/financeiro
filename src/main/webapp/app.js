@@ -1,10 +1,11 @@
-angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'ui.router'])
+angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'app.juridica', 'ui.router'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider.otherwise('home');
             var url = location.origin + '/financeiro/api/caixa';
             var url2 = location.origin + '/financeiro/api/categoria';
             var url3 = location.origin + '/financeiro/api/movimentocaixa';
+            var url4 = location.origin + '/financeiro/api/juridica';
 
             $stateProvider
                     .state('home', {
@@ -68,6 +69,33 @@ angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'ui.router'
                     })
 
 
+//                   PESSOA JURIDICA
+
+                    .state('juridica', {
+                        url: '/juridica',
+                        templateUrl: 'paginas/juridica/juridica.html',
+                        controller: 'JuridicaController',
+                        resolve: {
+                            entidade: function () {
+                                return {};
+                            }
+                        }
+                    })
+                    .state('juridicalistagem', {
+                        url: '/juridicalistagem',
+                        templateUrl: 'paginas/juridica/listar.html',
+                        controller: 'JuridicaListarController'
+                    })
+                    .state('juridicaeditar', {
+                        url: '/juridicaeditar/:id',
+                        templateUrl: 'paginas/juridica/juridica.html',
+                        controller: 'JuridicaController',
+                        resolve: {
+                            entidade: function ($http, $stateParams) {
+                                return $http.get(url4.concat('/' + $stateParams.id))
+                            }
+                        }
+                    })
 //
 ////                MOVIMENTO CAIXA
 //
