@@ -13,7 +13,6 @@ angular.module('app.categoria', [])
 
         })
         .controller('CategoriaListarController', function ($scope, CategoriaService) {
-
             $scope.remover = function (id) {
                 CategoriaService.remover(id)
                         .then(function (resposta) {

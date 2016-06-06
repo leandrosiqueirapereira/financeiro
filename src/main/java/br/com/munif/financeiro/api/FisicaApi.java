@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 /**
  *
  * @author barizon
+<<<<<<< HEAD
  */
 @WebServlet(name = "FisicaApi", urlPatterns = {"/api/fisica/*"} )
 public class FisicaApi extends SuperEntidadeApi<Fisica> {
@@ -14,4 +15,5 @@ public class FisicaApi extends SuperEntidadeApi<Fisica> {
     public Class<Fisica> getClasse(){
         return Fisica.class;
     }
+
 }

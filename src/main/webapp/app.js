@@ -16,6 +16,8 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
             var url11 = location.origin + '/financeiro/api/tipotitulo';
             var url12 = location.origin + '/financeiro/api/titulo';
 
+
+            
             $stateProvider
                     .state('home', {
                         url: '/home',
@@ -47,10 +49,6 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                             }
                         }
                     })
-
-
-//                Categoria
-
                     .state('categoria', {
                         url: '/categoria',
                         templateUrl: 'paginas/categoria/categoria.html',
@@ -58,6 +56,7 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         resolve: {
                             entidade: function () {
                                 return {};
+                                return {}
                             }
                         }
                     })
@@ -107,15 +106,14 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         }
                     })
 
-// Fisica
-
+                    //Fisica
                     .state('fisica', {
                         url: '/fisica',
                         templateUrl: 'paginas/fisica/fisica.html',
                         controller: 'FisicaController',
                         resolve: {
                             entidade: function () {
-                                return {};
+                                return {}
                             }
                         }
                     })
@@ -134,10 +132,6 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                             }
                         }
                     })
-                    
-                                        ////                Forma Pagamento
-
-
                     .state('formaPagamento', {
                         url: '/formaPagamento',
                         templateUrl: 'paginas/formaPagamento/formaPagamento.html',
@@ -358,7 +352,7 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         resolve: {
                             entidade: function ($http, $stateParams) {
                                 return $http.get(url12.concat('/' + $stateParams.id))
-                            }
+s                            }
                         }
                     })
         })

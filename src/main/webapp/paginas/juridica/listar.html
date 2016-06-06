@@ -1,17 +1,18 @@
-<h1>Listagem de Pessoa Fisica</h1>
+<h1>Listagem de Pessoa Juridica</h1>
 <div class="row">
     <div class="col-md-12">
-        <button ui-sref="fisica" class="btn btn-default">Novo</button>
+        <button ui-sref="juridica" class="btn btn-default">Novo</button>
         <table class="table table-hover">
             <tr>
                 <td>Nome</td>
-                <td>E-mail</td>
-                <td>CPF</td>
+                <td>Email</td>
+                <td>CNPJ</td>
+                <td>Opcoes</td>
             </tr>
-            <tr ng-repeat="fisica in dados">
-                <td>{{fisica.nome}}</td>
-                <td>{{fisica.email}}</td>
-                <td>{{fisica.cnpj}}</td>
+            <tr ng-repeat="juridica in dados">
+                <td>{{juridica.nome}}</td>
+                <td>{{juridica.email}}</td>
+                <td>{{juridica.cnpj}}</td>
                 <td>
                     <button ui-sref="juridicaeditar({id: juridica.codigo})" class="btn btn-info">Editar</button>
                     <button ng-click="remover(juridica.codigo)" class="btn btn-danger">Remover</button>
