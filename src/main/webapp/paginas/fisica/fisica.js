@@ -1,21 +1,21 @@
-angular.module('app.categoria', [])
-        .controller('CategoriaController', function ($scope, CategoriaService, $state, entidade) {
+angular.module('app.fisica', [])
+        .controller('FisicaController', function ($scope, FisicaService, $state, entidade) {
             $scope.entidade = entidade.data || {};
             
             $scope.salvar = function (entidade) {
-                CategoriaService.salvar(entidade)
+                FisicaService.salvar(entidade)
                         .then(function (resposta) {
                             if(resposta.status == 200){
-                                $state.go('categorialistagem')
+                                $state.go('fisicalistagem')
                             }
                         })
             }
 
         })
-        .controller('CategoriaListarController', function ($scope, CategoriaService) {
+        .controller('FisicaListarController', function ($scope, FisicaService) {
             
             $scope.remover = function (id){
-                CategoriaService.remover(id)
+                FisicaService.remover(id)
                         .then(function (resposta){
                             if(resposta.status == 200){
                                 $scope.listar();
@@ -26,7 +26,7 @@ angular.module('app.categoria', [])
             }
             
             $scope.listar = function (){
-                CategoriaService.buscar()
+                FisicaService.buscar()
                         .then(function (resposta){
                             $scope.dados = resposta.data;
                         })
@@ -35,8 +35,8 @@ angular.module('app.categoria', [])
             $scope.listar();
             
         })
-        .service('CategoriaService', function ($http) {
-            var url = location.origin + '/financeiro/api/categoria'
+        .service('FisicaService', function ($http) {
+            var url = location.origin + '/financeiro/api/fisica'
 
             this.salvar = function (entidade) {
                 if(entidade.codigo){

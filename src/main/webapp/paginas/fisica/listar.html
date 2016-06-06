@@ -1,0 +1,23 @@
+<h1>Listagem de Pessoas Físicas</h1>
+<div class="row">
+    <div class="col-md-12">
+        <button ui-sref="fisica" class="btn btn-default">Novo</button>
+        <table class="table table-hover">
+            <tr>
+                <td>Nome</td>
+                <td>Email</td>
+                <td>CPF</td>
+                <td>Opcões</td>
+            </tr>
+            <tr ng-repeat="fisica in dados">
+                <td>{{fisica.nome}}</td>
+                <td>{{fisica.email}}</td>
+                <td>{{fisica.cpf}}</td>
+                <td>
+                    <button ui-sref="fisicaeditar({id: fisica.codigo})" class="btn btn-info">Editar</button>
+                    <button ng-click="remover(fisica.pessoa.codigo)" class="btn btn-danger">Remover</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
