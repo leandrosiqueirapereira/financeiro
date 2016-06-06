@@ -1,7 +1,6 @@
 angular.module('app.categoria', [])
         .controller('CategoriaController', function ($scope, CategoriaService, $state, entidade) {
             $scope.entidade = entidade.data || {};
-
             $scope.salvar = function (entidade) {
                 CategoriaService.salvar(entidade)
                         .then(function (resposta) {
@@ -13,7 +12,6 @@ angular.module('app.categoria', [])
 
         })
         .controller('CategoriaListarController', function ($scope, CategoriaService) {
-
             $scope.remover = function (id) {
                 CategoriaService.remover(id)
                         .then(function (resposta) {
