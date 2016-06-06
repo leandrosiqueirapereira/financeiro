@@ -1,0 +1,18 @@
+<h1 align="center">Cadastro de Pessoa Física</h1>
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row container-fluid">
+                <form name="FisicaForm">
+                    <label>Nome:</label>
+                    <input required type="text" class="form-control" ng-model="entidade.nome"/>
+                    <label>Email:</label>
+                    <input required type="text" class="form-control" ng-model="entidade.email"/>
+                    <label>CPF:</label>
+                    <input required type="text" class="form-control" ng-model="entidade.cpf"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button ng-disabled="FisicaForm.$invalid" ng-click="salvar(entidade)" type="button" class="btn btn-primary pull-right">Salvar</button>
+</div>

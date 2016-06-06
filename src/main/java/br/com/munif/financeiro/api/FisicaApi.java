@@ -1,7 +1,6 @@
 package br.com.munif.financeiro.api;
 
 import br.com.munif.financeiro.entidades.Fisica;
-import br.com.munif.financeiro.entidades.Juridica;
 import javax.servlet.annotation.WebServlet;
 
 /**

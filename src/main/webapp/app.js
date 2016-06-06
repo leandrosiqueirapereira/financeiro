@@ -1,5 +1,5 @@
 angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','app.formaPagamento','app.juridica','app.movimentoCaixa',
-               'app.natureza','app.pagamento','app.pessoa','app.saldo','app.tipoTitulo','app.titulo','ui.router'])
+               'app.pagamento','app.saldo','app.titulo','ui.router'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider.otherwise('home');
@@ -72,7 +72,7 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         controller: 'CategoriaController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url2.concat('/' + $stateParams.id))
+                                return $http.get(url1.concat('/' + $stateParams.id))
                             }
                         }
                     })
@@ -102,7 +102,7 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         controller: 'MovimentoCaixaController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url.concat('/' + $stateParams.id))
+                                return $http.get(url6.concat('/' + $stateParams.id))
                             }
                         }
                     })
@@ -130,7 +130,7 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         controller: 'FisicaController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url.concat('/' + $stateParams.id))
+                                return $http.get(url2.concat('/' + $stateParams.id))
                             }
                         }
                     })
@@ -159,7 +159,7 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         controller: 'FormaPagamentoController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url.concat('/' + $stateParams.id))
+                                return $http.get(url4.concat('/' + $stateParams.id))
                             }
                         }
                     })
@@ -188,40 +188,40 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         controller: 'JuridicaController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url2.concat('/' + $stateParams.id))
+                                return $http.get(url5.concat('/' + $stateParams.id))
                             }
                         }
                     })
                     
-                                        //                Natureza
-
-                    .state('natureza', {
-                        url: '/natureza',
-                        templateUrl: 'paginas/natureza/natureza.html',
-                        controller: 'NaturezaController',
-                        resolve: {
-                            entidade: function () {
-                                return {};
-                            }
-                        }
-                    })
-                    .state('naturezalistagem', {
-                        url: '/naturezalistagem',
-                        templateUrl: 'paginas/natureza/listar.html',
-                        controller: 'NaturezaListarController'
-                    })
-                    .state('naturezaeditar', {
-                        url: '/naturezaeditar/:id',
-                        templateUrl: 'paginas/natureza/natureza.html',
-                        controller: 'NaturezaController',
-                        resolve: {
-                            entidade: function ($http, $stateParams) {
-                                return $http.get(url2.concat('/' + $stateParams.id))
-                            }
-                        }
-                    })
-                    
-                                                            ////                Pagamento
+//                                        //                Natureza
+//
+//                    .state('natureza', {
+//                        url: '/natureza',
+//                        templateUrl: 'paginas/natureza/natureza.html',
+//                        controller: 'NaturezaController',
+//                        resolve: {
+//                            entidade: function () {
+//                                return {};
+//                            }
+//                        }
+//                    })
+//                    .state('naturezalistagem', {
+//                        url: '/naturezalistagem',
+//                        templateUrl: 'paginas/natureza/listar.html',
+//                        controller: 'NaturezaListarController'
+//                    })
+//                    .state('naturezaeditar', {
+//                        url: '/naturezaeditar/:id',
+//                        templateUrl: 'paginas/natureza/natureza.html',
+//                        controller: 'NaturezaController',
+//                        resolve: {
+//                            entidade: function ($http, $stateParams) {
+//                                return $http.get(url7.concat('/' + $stateParams.id))
+//                            }
+//                        }
+//                    })
+//                    
+                  ////                Pagamento
 
 
                     .state('pagamento', {
@@ -245,38 +245,38 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         controller: 'PagamentoController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url.concat('/' + $stateParams.id))
+                                return $http.get(url8.concat('/' + $stateParams.id))
                             }
                         }
                     })
                     
                     //           Pessoa
-                    
-                    .state('pessoa', {
-                        url: '/pessoa',
-                        templateUrl: 'paginas/pessoa/pessoa.html',
-                        controller: 'PessoaController',
-                        resolve: {
-                            entidade: function () {
-                                return {};
-                            }
-                        }
-                    })
-                    .state('pessoalistagem', {
-                        url: '/pessoalistagem',
-                        templateUrl: 'paginas/pessoa/listar.html',
-                        controller: 'PessoaListarController'
-                    })
-                    .state('pessoaeditar', {
-                        url: '/pessoaeditar/:id',
-                        templateUrl: 'paginas/pessoa/pessoa.html',
-                        controller: 'PessoaController',
-                        resolve: {
-                            entidade: function ($http, $stateParams) {
-                                return $http.get(url.concat('/' + $stateParams.id))
-                            }
-                        }
-                    })
+//                    
+//                    .state('pessoa', {
+//                        url: '/pessoa',
+//                        templateUrl: 'paginas/pessoa/pessoa.html',
+//                        controller: 'PessoaController',
+//                        resolve: {
+//                            entidade: function () {
+//                                return {};
+//                            }
+//                        }
+//                    })
+//                    .state('pessoalistagem', {
+//                        url: '/pessoalistagem',
+//                        templateUrl: 'paginas/pessoa/listar.html',
+//                        controller: 'PessoaListarController'
+//                    })
+//                    .state('pessoaeditar', {
+//                        url: '/pessoaeditar/:id',
+//                        templateUrl: 'paginas/pessoa/pessoa.html',
+//                        controller: 'PessoaController',
+//                        resolve: {
+//                            entidade: function ($http, $stateParams) {
+//                                return $http.get(url.concat('/' + $stateParams.id))
+//                            }
+//                        }
+//                    })
                     
                     //                 Saldo
                     
@@ -301,39 +301,39 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         controller: 'SaldoController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url.concat('/' + $stateParams.id))
+                                return $http.get(url10.concat('/' + $stateParams.id))
                             }
                         }
                     })
                     
-                    //                 Tipo de Titulo
-                    
-                    .state('tipoTitulo', {
-                        url: '/tipoTitulo',
-                        templateUrl: 'paginas/tipoTitulo/tipoTitulo.html',
-                        controller: 'TipoTituloController',
-                        resolve: {
-                            entidade: function () {
-                                return {};
-                            }
-                        }
-                    })
-                    .state('tipoTitulolistagem', {
-                        url: '/tipoTitulolistagem',
-                        templateUrl: 'paginas/tipoTitulo/listar.html',
-                        controller: 'TipoTituloListarController'
-                    })
-                    .state('tipoTituloeditar', {
-                        url: '/tipoTituloeditar/:id',
-                        templateUrl: 'paginas/tipoTitulo/tipoTitulo.html',
-                        controller: 'TipoTituloController',
-                        resolve: {
-                            entidade: function ($http, $stateParams) {
-                                return $http.get(url.concat('/' + $stateParams.id))
-                            }
-                        }
-                    })
-                    
+//                    //                 Tipo de Titulo
+//                    
+//                    .state('tipoTitulo', {
+//                        url: '/tipoTitulo',
+//                        templateUrl: 'paginas/tipoTitulo/tipoTitulo.html',
+//                        controller: 'TipoTituloController',
+//                        resolve: {
+//                            entidade: function () {
+//                                return {};
+//                            }
+//                        }
+//                    })
+//                    .state('tipoTitulolistagem', {
+//                        url: '/tipoTitulolistagem',
+//                        templateUrl: 'paginas/tipoTitulo/listar.html',
+//                        controller: 'TipoTituloListarController'
+//                    })
+//                    .state('tipoTituloeditar', {
+//                        url: '/tipoTituloeditar/:id',
+//                        templateUrl: 'paginas/tipoTitulo/tipoTitulo.html',
+//                        controller: 'TipoTituloController',
+//                        resolve: {
+//                            entidade: function ($http, $stateParams) {
+//                                return $http.get(url11.concat('/' + $stateParams.id))
+//                            }
+//                        }
+//                    })
+//                    
                     //                 Titulo
                     
                     .state('titulo', {
@@ -357,7 +357,7 @@ angular.module('sistema', ['app.home','app.caixa','app.categoria','app.fisica','
                         controller: 'TituloController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url.concat('/' + $stateParams.id))
+                                return $http.get(url12.concat('/' + $stateParams.id))
                             }
                         }
                     })

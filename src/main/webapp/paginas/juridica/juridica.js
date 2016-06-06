@@ -1,21 +1,21 @@
-angular.module('app.natureza', [])
-        .controller('NaturezaController', function ($scope, NaturezaService, $state, entidade) {
+angular.module('app.juridica', [])
+        .controller('JuridicaController', function ($scope, JuridicaService, $state, entidade) {
             $scope.entidade = entidade.data || {};
 
             $scope.salvar = function (entidade) {
-                NaturezaService.salvar(entidade)
+                JuridicaService.salvar(entidade)
                         .then(function (resposta) {
                             if (resposta.status == 200) {
-                                $state.go('naturezalistagem')
+                                $state.go('juridicalistagem')
                             }
                         })
             }
 
         })
-        .controller('NaturezaListarController', function ($scope, NaturezaService) {
+        .controller('JuridicaListarController', function ($scope, JuridicaService) {
 
             $scope.remover = function (id) {
-                NaturezaService.remover(id)
+                JuridicaService.remover(id)
                         .then(function (resposta) {
                             console.log(resposta)
                             if (resposta.status == 200) {
@@ -27,7 +27,7 @@ angular.module('app.natureza', [])
             }
 
             $scope.listar = function () {
-                NaturezaService.buscar()
+                JuridicaService.buscar()
                         .then(function (resposta) {
                             $scope.dados = resposta.data;
                         })
@@ -36,8 +36,8 @@ angular.module('app.natureza', [])
             $scope.listar();
 
         })
-        .service('NaturezaService', function ($http) {
-            var url = location.origin + '/financeiro/api/natureza'
+        .service('JuridicaService', function ($http) {
+            var url = location.origin + '/financeiro/api/juridica'
 
             this.salvar = function (entidade) {
                 if (entidade.codigo) {

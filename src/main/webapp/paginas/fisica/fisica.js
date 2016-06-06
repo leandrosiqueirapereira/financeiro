@@ -1,21 +1,21 @@
-angular.module('app.tipoTitulo', [])
-        .controller('TipoTituloController', function ($scope, TipoTituloService, $state, entidade) {
+angular.module('app.fisica', [])
+        .controller('FisicaController', function ($scope, FisicaService, $state, entidade) {
             $scope.entidade = entidade.data || {};
 
             $scope.salvar = function (entidade) {
-                TipoTituloService.salvar(entidade)
+                FisicaService.salvar(entidade)
                         .then(function (resposta) {
                             if (resposta.status == 200) {
-                                $state.go('tipoTitulolistagem')
+                                $state.go('fisicalistagem')
                             }
                         })
             }
 
         })
-        .controller('TipoTituloListarController', function ($scope, TipoTituloService) {
+        .controller('FisicaListarController', function ($scope, FisicaService) {
 
             $scope.remover = function (id) {
-                TipoTituloService.remover(id)
+                FisicaService.remover(id)
                         .then(function (resposta) {
                             console.log(resposta)
                             if (resposta.status == 200) {
@@ -27,7 +27,7 @@ angular.module('app.tipoTitulo', [])
             }
 
             $scope.listar = function () {
-                TipoTituloService.buscar()
+                FisicaService.buscar()
                         .then(function (resposta) {
                             $scope.dados = resposta.data;
                         })
@@ -36,8 +36,8 @@ angular.module('app.tipoTitulo', [])
             $scope.listar();
 
         })
-        .service('TipoTituloService', function ($http) {
-            var url = location.origin + '/financeiro/api/tipoTitulo'
+        .service('FisicaService', function ($http) {
+            var url = location.origin + '/financeiro/api/fisica'
 
             this.salvar = function (entidade) {
                 if (entidade.codigo) {
