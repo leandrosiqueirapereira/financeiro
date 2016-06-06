@@ -1,11 +1,10 @@
-angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'ui.router'])
+angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'app.fisica', 'ui.router'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider.otherwise('home');
-            var url = location.origin + '/financeiro/api/caixa';
-            var url2 = location.origin + '/financeiro/api/categoria';
-            var url3 = location.origin + '/financeiro/api/movimentocaixa';
-
+            var urlCaixa = location.origin + '/financeiro/api/caixa';
+            var urlCategoria = location.origin + '/financeiro/api/categoria';
+            var urlFisica = location.origin + '/financeiro/api/fisica';
             $stateProvider
                     .state('home', {
                         url: '/home',
@@ -33,21 +32,20 @@ angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'ui.router'
                         controller: 'CaixaController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url.concat('/' + $stateParams.id))
+                                return $http.get(urlCaixa.concat('/' + $stateParams.id))
                             }
                         }
                     })
 
 
-//                Categoria
-
+                    //Categoria
                     .state('categoria', {
                         url: '/categoria',
                         templateUrl: 'paginas/categoria/categoria.html',
                         controller: 'CategoriaController',
                         resolve: {
                             entidade: function () {
-                                return {};
+                                return {}
                             }
                         }
                     })
@@ -62,41 +60,34 @@ angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'ui.router'
                         controller: 'CategoriaController',
                         resolve: {
                             entidade: function ($http, $stateParams) {
-                                return $http.get(url2.concat('/' + $stateParams.id))
+                                return $http.get(urlCategoria.concat('/' + $stateParams.id))
                             }
                         }
                     })
-
-
-//
-////                MOVIMENTO CAIXA
-//
-//
-//                    .state('movimentocaixa', {
-//                        url: '/movimentocaixa',
-//                        templateUrl: 'paginas/movimentocaixa/movimentocaixa.html',
-//                        controller: 'MovimentoCaixaController',
-//                        resolve: {
-//                            entidade: function () {
-//                                return {};
-//                            }
-//                        }
-//                    })
-//                    .state('movimentocaixalistagem', {
-//                        url: '/movimentocaixalistagem',
-//                        templateUrl: 'paginas/movimentocaixa/listar.html',
-//                        controller: 'MovimentoCaixaListarController'
-//                    })
-//                    .state('movimentocaixaeditar', {
-//                        url: '/movimentocaixaeditar/:id',
-//                        templateUrl: 'paginas/movimentocaixa/movimentocaixa.html',
-//                        controller: 'MovimentoCaixaController',
-//                        resolve: {
-//                            entidade: function ($http, $stateParams) {
-//                                return $http.get(url3.concat('/' + $stateParams.id))
-//                            }
-//                        }
-//                    })
-//
-
+                    //Fisica
+                    .state('fisica', {
+                        url: '/fisica',
+                        templateUrl: 'paginas/fisica/fisica.html',
+                        controller: 'FisicaController',
+                        resolve: {
+                            entidade: function () {
+                                return {}
+                            }
+                        }
+                    })
+                    .state('fisicalistagem', {
+                        url: '/fisicalistagem',
+                        templateUrl: 'paginas/fisica/listar.html',
+                        controller: 'FisicaListarController'
+                    })
+                    .state('fisicaeditar', {
+                        url: '/fisicaeditar/:id',
+                        templateUrl: 'paginas/fisica/fisica.html',
+                        controller: 'FisicaController',
+                        resolve: {
+                            entidade: function ($http, $stateParams) {
+                                return $http.get(urlFisica.concat('/' + $stateParams.id))
+                            }
+                        }
+                    })
         })
