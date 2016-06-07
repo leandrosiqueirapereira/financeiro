@@ -1,19 +1,21 @@
-angular.module('app.categoria', [])
-        .controller('CategoriaController', function ($scope, CategoriaService, $state, entidade) {
+angular.module('app.pagamento', [])
+        .controller('PagamentoController', function ($scope, PagamentoService, $state, entidade) {
             $scope.entidade = entidade.data || {};
+
             $scope.salvar = function (entidade) {
-                CategoriaService.salvar(entidade)
+                PagamentoService.salvar(entidade)
                         .then(function (resposta) {
                             if (resposta.status == 200) {
-                                $state.go('categorialistagem')
+                                $state.go('pagamentolistagem')
                             }
                         })
             }
 
         })
-        .controller('CategoriaListarController', function ($scope, CategoriaService) {
+        .controller('PagamentoListarController', function ($scope, PagamentoService) {
+
             $scope.remover = function (id) {
-                CategoriaService.remover(id)
+                PagamentoService.remover(id)
                         .then(function (resposta) {
                             console.log(resposta)
                             if (resposta.status == 200) {
@@ -25,7 +27,7 @@ angular.module('app.categoria', [])
             }
 
             $scope.listar = function () {
-                CategoriaService.buscar()
+                PagamentoService.buscar()
                         .then(function (resposta) {
                             $scope.dados = resposta.data;
                         })
@@ -34,8 +36,8 @@ angular.module('app.categoria', [])
             $scope.listar();
 
         })
-        .service('CategoriaService', function ($http) {
-            var url = location.origin + '/financeiro/api/categoria'
+        .service('PagamentoService', function ($http) {
+            var url = location.origin + '/financeiro/api/pagamento'
 
             this.salvar = function (entidade) {
                 if (entidade.codigo) {

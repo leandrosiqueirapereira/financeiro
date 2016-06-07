@@ -1,19 +1,21 @@
-angular.module('app.categoria', [])
-        .controller('CategoriaController', function ($scope, CategoriaService, $state, entidade) {
+angular.module('app.movimentoCaixa', [])
+        .controller('MovimentoCaixaController', function ($scope, MovimentoCaixaService, $state, entidade) {
             $scope.entidade = entidade.data || {};
+
             $scope.salvar = function (entidade) {
-                CategoriaService.salvar(entidade)
+                MovimentoCaixaService.salvar(entidade)
                         .then(function (resposta) {
                             if (resposta.status == 200) {
-                                $state.go('categorialistagem')
+                                $state.go('movimentoCaixalistagem')
                             }
                         })
             }
 
         })
-        .controller('CategoriaListarController', function ($scope, CategoriaService) {
+        .controller('MovimentoCaixaListarController', function ($scope, MovimentoCaixaService) {
+
             $scope.remover = function (id) {
-                CategoriaService.remover(id)
+                MovimentoCaixaService.remover(id)
                         .then(function (resposta) {
                             console.log(resposta)
                             if (resposta.status == 200) {
@@ -25,7 +27,7 @@ angular.module('app.categoria', [])
             }
 
             $scope.listar = function () {
-                CategoriaService.buscar()
+                MovimentoCaixaService.buscar()
                         .then(function (resposta) {
                             $scope.dados = resposta.data;
                         })
@@ -34,8 +36,8 @@ angular.module('app.categoria', [])
             $scope.listar();
 
         })
-        .service('CategoriaService', function ($http) {
-            var url = location.origin + '/financeiro/api/categoria'
+        .service('MovimentoCaixaService', function ($http) {
+            var url = location.origin + '/financeiro/api/movimentoCaixa'
 
             this.salvar = function (entidade) {
                 if (entidade.codigo) {

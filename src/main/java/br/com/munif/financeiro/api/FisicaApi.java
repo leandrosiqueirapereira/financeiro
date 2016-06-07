@@ -14,6 +14,20 @@ public class FisicaApi extends SuperEntidadeApi<Fisica>{
     
      @Override
     public Class<Fisica> getClasse() {
+ *
+ * @author mrroot
+ */
+@WebServlet(name = "FisicaApi", urlPatterns = {"/api/fisica/*"})
+public class FisicaApi extends SuperEntidadeApi<Fisica>{
+    
+     @Override
+    public Class<Fisica> getClasse() {
+ */
+@WebServlet(name = "FisicaApi", urlPatterns = {"/api/fisica/*"} )
+public class FisicaApi extends SuperEntidadeApi<Fisica> {
+    
+    @Override
+    public Class<Fisica> getClasse(){
         return Fisica.class;
     }
 
