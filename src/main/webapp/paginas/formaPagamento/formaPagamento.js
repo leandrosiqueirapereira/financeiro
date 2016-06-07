@@ -37,7 +37,7 @@ angular.module('app.formaPagamento', [])
 
         })
         .service('FormaPagamentoService', function ($http) {
-            var url = location.origin + '/financeiro/api/formaPagamento'
+            var url = location.origin + '/financeiro/api/formapagamento'
 
             this.salvar = function (entidade) {
                 if (entidade.codigo) {

@@ -1,10 +1,12 @@
-angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'app.fisica', 'ui.router'])
+angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'app.fisica', 'app.formaPagamento', 'ui.router'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider.otherwise('home');
             var urlCaixa = location.origin + '/financeiro/api/caixa';
             var urlCategoria = location.origin + '/financeiro/api/categoria';
             var urlFisica = location.origin + '/financeiro/api/fisica';
+            var urlFormaPagamento = location.origin + '/financeiro/api/formapagamento';
+
             $stateProvider
                     .state('home', {
                         url: '/home',
@@ -90,4 +92,30 @@ angular.module('sistema', ['app.home', 'app.caixa', 'app.categoria', 'app.fisica
                             }
                         }
                     })
+                    //Forma Pagamento
+                    .state('formaPagamento', {
+                        url: '/formaPagamento',
+                        templateUrl: 'paginas/formaPagamento/formapagamento.html',
+                        controller: 'FormaPagamentoController',
+                        resolve: {
+                            entidade: function () {
+                                return {}
+                            }
+                        }
+                    })
+                    .state('formaPagamentolistagem', {
+                        url: '/formaPagamentolistagem',
+                        templateUrl: 'paginas/formaPagamento/listar.html',
+                        controller: 'FormaPagamentoListarController'
+                    })
+                    .state('formaPagamentoeditar', {
+                        url: '/formaPagamentoeditar/:id',
+                        templateUrl: 'paginas/formaPagamento/formapagamento.html',
+                        controller: 'FormaPagamentoController',
+                        resolve: {
+                            entidade: function ($http, $stateParams) {
+                                return $http.get(urlFormaPagamento.concat('/' + $stateParams.id))
+                            }
+                        }
+                    });
         })
