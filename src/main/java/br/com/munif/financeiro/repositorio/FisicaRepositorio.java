@@ -25,3 +25,5 @@ public class FisicaRepositorio extends SuperEntidadeRepositorio<Fisica>{
     }
 
 }
+=======
+}

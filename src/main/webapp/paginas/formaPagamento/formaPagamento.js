@@ -1,19 +1,21 @@
-angular.module('app.categoria', [])
-        .controller('CategoriaController', function ($scope, CategoriaService, $state, entidade) {
+angular.module('app.formaPagamento', [])
+        .controller('FormaPagamentoController', function ($scope, FormaPagamentoService, $state, entidade) {
             $scope.entidade = entidade.data || {};
+
             $scope.salvar = function (entidade) {
-                CategoriaService.salvar(entidade)
+                FormaPagamentoService.salvar(entidade)
                         .then(function (resposta) {
                             if (resposta.status == 200) {
-                                $state.go('categorialistagem')
+                                $state.go('formaPagamentolistagem')
                             }
                         })
             }
 
         })
-        .controller('CategoriaListarController', function ($scope, CategoriaService) {
+        .controller('FormaPagamentoListarController', function ($scope, FormaPagamentoService) {
+
             $scope.remover = function (id) {
-                CategoriaService.remover(id)
+                FormaPagamentoService.remover(id)
                         .then(function (resposta) {
                             console.log(resposta)
                             if (resposta.status == 200) {
@@ -25,7 +27,7 @@ angular.module('app.categoria', [])
             }
 
             $scope.listar = function () {
-                CategoriaService.buscar()
+                FormaPagamentoService.buscar()
                         .then(function (resposta) {
                             $scope.dados = resposta.data;
                         })
@@ -34,8 +36,8 @@ angular.module('app.categoria', [])
             $scope.listar();
 
         })
-        .service('CategoriaService', function ($http) {
-            var url = location.origin + '/financeiro/api/categoria'
+        .service('FormaPagamentoService', function ($http) {
+            var url = location.origin + '/financeiro/api/formaPagamento'
 
             this.salvar = function (entidade) {
                 if (entidade.codigo) {

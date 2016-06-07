@@ -1,0 +1,15 @@
+<h1 align="center">Cadastro de Movimento dos Caixas</h1>
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row container-fluid">
+                <form name="MovimentoCaixaForm">
+                    <label>Movimento do Caixa:</label>
+                    <input required type="text" class="form-control" ng-model="entidade.nome"/>
+                    <p ng-show="!entidade.nome" class="text text-danger">Selecione um Historico de Caixas</p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button ng-disabled="MovimentoCaixaForm.$invalid" ng-click="salvar(entidade)" type="button" class="btn btn-primary pull-right">Salvar</button>
+</div>

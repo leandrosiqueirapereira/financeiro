@@ -1,0 +1,25 @@
+<h1>Listagem de Pagamentos</h1>
+<div class="row">
+    <div class="col-md-12">
+        <button ui-sref="pagamento" class="btn btn-default">Novo</button>
+        <table class="table table-hover">
+            <tr>
+                <td>Quando</td>
+                <td>Valor</td>
+                <td>Titulo</td>
+                <td>Forma de Pagamento</td>
+                <td>Opcões</td>
+            </tr>
+            <tr ng-repeat="pagamento in dados">
+                <td>{{pagamento.quando}}</td>
+                <td>{{pagamento.valor}}</td>
+                <td>{{pagamento.titulo}}</td>
+                <td>{{pagamento.formaPagamento}}</td>
+                <td>
+                    <button ui-sref="pagamentoeditar({id: pagamento.codigo})" class="btn btn-info">Editar</button>
+                    <button ng-click="remover(pagamento.codigo)" class="btn btn-danger">Remover</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

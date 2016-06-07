@@ -1,0 +1,24 @@
+<h1 align="center">Cadastro de Pagamentos</h1>
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row container-fluid">
+                <form name="PagamentoForm">
+                    <label>Quando:</label>
+                    <input required type="date" class="form-control" ng-model="entidade.quando"/>
+                    <label>Valor:</label>
+                    <input required type="text" class="form-control" ng-model="entidade.valor"/>
+                    <label>Titulo:</label>
+                    <input required type="text" class="form-control" ng-model="entidade.titulo"/>
+                    <label>Forma de Pagamento:</label>
+                    <select class="form-control" ng-model="entidade.formaPagamento">
+                        <option>Dinheiro</option>
+                        <option>Cartão</option>
+                        <option>Boleto</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button ng-disabled="PagamentoForm.$invalid" ng-click="salvar(entidade)" type="button" class="btn btn-primary pull-right">Salvar</button>
+</div>
